@@ -1,0 +1,45 @@
+body {
+    background: beige
+}
+.panel {
+  
+    height: 300px;
+    width: 250px;
+    overflow-y: auto;
+}
+.search_field {
+    border-radius: 2%;
+    background: lightskyblue;
+}
+#main {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 500px;
+    height: 300px;
+    background: yellowgreen;
+    border-style: solid;
+    border-color: black;
+    border-radius: 2%;
+    box-shadow: 10px 10px 5px grey;
+    display: flex;
+
+}
+#allfriends {
+    background: tomato;  
+}
+#filtered {
+    background: lightseagreen;   
+}
+.friend {
+    background: blueviolet;
+    text-align: center;
+    display: flex;
+}
+.friend img {
+    border-radius: 50%;
+}
+.friend_name_surname {
+    text-align: center;
+    vertical-align: middle;
+}

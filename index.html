@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+   <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"/> -->
+    <title>Друго-фильтр с Handlebars</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
+    <script src="http://vk.com/js/api/openapi.js" type="text/javascript"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script>
+            function add2filter(event) {
+                alert(event.target.parentNode);
+               console.log(friends_list[0]);
+
+            }
+    </script>
+</head>
+<body>
+    <div id="main">
+        <div id="allfriendsParent" class="panel">
+            
+           <!-- friends here -->
+           <input type="text" class="search_field" id="allfriends_search" width="100px"/>
+           <div id="allfriends"></div>
+        </div>
+        <div id="filteredParent" class="panel">
+            <input type="text" class="search_field" id="filtered_search" width="100px"/>
+           <!-- filtered friends here -->
+           <div id="filtered"></div>
+        </div>
+    </div>
+    <script id="friend-template" type="text/x-handlebars-template">
+        <div class="friends">
+            {{#each items}}
+            <div class="friend" id= {{nickname}} >
+                <img src="{{photo_50}}"/>
+                <div class="friend_name_surname">{{first_name}} {{last_name}}</div>
+                <img src="./img/plus_sybol.svg" style="width:20px" class="add" onclick="add2filter(event);" />
+            </div>
+            {{else}}
+             нет друзей :(
+            {{/each}}
+        </div>
+    </script>
+
+    <script id="filter-template" type="text/x-handlebars-template">
+        <div class="friends">
+            {{#each items}}
+            <div class="friend" id= {{nickname}} >
+                <img src="{{photo_50}}"/>
+                <div class="friend_name_surname">{{first_name}} {{last_name}}</div>
+                <img src="./img/minus_sybol.svg" style="width:20px" class="remove"  />
+            </div>
+            {{else}}
+             список друзей  пуст:(
+            {{/each}}
+        </div>
+    </script>
+
+    <script src="./main.js"></script>
+    <script src="./filter.js"></script>
+
+</body>
+</html>
