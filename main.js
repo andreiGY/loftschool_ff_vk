@@ -1,5 +1,3 @@
-var friends_list;
-
 // 1) регистрация приложения -> получение api id
 // 2) авторизоваться на сайте
 //   - открыть окно с запросом прав
@@ -43,7 +41,8 @@ function callAPI(method, params) {
 
      //   headerInfo.textContent = `Друзья на странице ${me.first_name} ${me.last_name}`;
 
-        const friends = await callAPI('friends.get', { fields: 'nickname, photo_50, first_name, last_name', count: 10 });
+        const rawfriends = await callAPI('friends.get', { fields: 'nickname, photo_50, first_name, last_name', count: 10 });
+        const friends = rawfriends.items;
         const template = document.querySelector('#friend-template').textContent;
         const render = Handlebars.compile(template);
         const html = render(friends);
@@ -56,3 +55,29 @@ function callAPI(method, params) {
         console.error(e);
     }
 })();
+
+function showFilter() {
+    let stored = readStorage();
+    const ftemplate = document.querySelector('#filter-template').textContent;
+    const frender = Handlebars.compile(ftemplate);
+    const fhtml = frender(stored);
+    const filtered = document.querySelector('#filtered');
+
+    filtered.innerHTML = fhtml;
+    console.log(JSON.stringify(filtered));
+    filter = filtered;
+
+}
+
+showFilter();
+
+function refreshFriends() {
+    const rtemplate = document.querySelector('#friend-template').textContent;
+    const rrender = Handlebars.compile(rtemplate);
+    const rhtml = rrender(friends_list);
+    const rfriends = document.querySelector('#allfriends');
+
+    rfriends.innerHTML = rhtml;
+    console.log(JSON.stringify(rfriends));
+   // filter = filtered;
+}

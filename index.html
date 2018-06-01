@@ -8,35 +8,26 @@
     <script src="http://vk.com/js/api/openapi.js" type="text/javascript"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script>
-            function add2filter(event) {
-                alert(event.target.parentNode);
-               console.log(friends_list[0]);
-
-            }
-    </script>
+    <script src="./filter.js"></script>
 </head>
 <body>
     <div id="main">
         <div id="allfriendsParent" class="panel">
-            
-           <!-- friends here -->
-           <input type="text" class="search_field" id="allfriends_search" width="100px"/>
+           <input type="text" class="search_field" id="allfriends_search" width="100px" onkeyup="searchInPanel(this.value,'friends')"/>
            <div id="allfriends"></div>
         </div>
         <div id="filteredParent" class="panel">
-            <input type="text" class="search_field" id="filtered_search" width="100px"/>
-           <!-- filtered friends here -->
+            <input type="text" class="search_field" id="filtered_search" width="100px" onkeyup="searchInPanel(this.value,'filter')"/>
            <div id="filtered"></div>
         </div>
     </div>
     <script id="friend-template" type="text/x-handlebars-template">
-        <div class="friends">
-            {{#each items}}
-            <div class="friend" id= {{nickname}} >
+        <div class="friends"> <!--  items -->
+            {{#each this}}   
+            <div class="friend" id= {{id}} >
                 <img src="{{photo_50}}"/>
                 <div class="friend_name_surname">{{first_name}} {{last_name}}</div>
-                <img src="./img/plus_sybol.svg" style="width:20px" class="add" onclick="add2filter(event);" />
+                <img src="./img/plus_sybol.svg" style="width:20px" class="add" onclick="add2filter(event, this.parentNode.id)" />
             </div>
             {{else}}
              нет друзей :(
@@ -45,12 +36,12 @@
     </script>
 
     <script id="filter-template" type="text/x-handlebars-template">
-        <div class="friends">
-            {{#each items}}
-            <div class="friend" id= {{nickname}} >
+        <div class="friends" >
+            {{#each this}}
+            <div class="friend" id= {{id}} >
                 <img src="{{photo_50}}"/>
                 <div class="friend_name_surname">{{first_name}} {{last_name}}</div>
-                <img src="./img/minus_sybol.svg" style="width:20px" class="remove"  />
+                <img src="./img/minus_sybol.svg" style="width:20px" class="remove" onclick="removeFromFilter(event, this.parentNode.id)"  />
             </div>
             {{else}}
              список друзей  пуст:(
@@ -59,7 +50,7 @@
     </script>
 
     <script src="./main.js"></script>
-    <script src="./filter.js"></script>
+
 
 </body>
 </html>
