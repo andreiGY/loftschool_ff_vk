@@ -9,15 +9,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="./filter.js"></script>
+    <script src="./dragnrop.js"></script>
 </head>
 <body>
     <div id="main">
         <div id="allfriendsParent" class="panel">
-           <input type="text" class="search_field" id="allfriends_search" width="100px" onkeyup="searchInPanel(this.value,'friends')"/>
+           <input type="text" class="search_field" id="allfriends_search" width="100px" onkeyup="searchInPanel(this.value,friends_list)"/>
            <div id="allfriends"></div>
         </div>
         <div id="filteredParent" class="panel">
-            <input type="text" class="search_field" id="filtered_search" width="100px" onkeyup="searchInPanel(this.value,'filter')"/>
+            <input type="text" class="search_field" id="filtered_search" width="100px" onkeyup="searchInPanel(this.value,filter_list)"/>
            <div id="filtered"></div>
         </div>
     </div>

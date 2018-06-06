@@ -41,6 +41,7 @@ body {
     background: blueviolet;
     text-align: center;
     display: flex;
+    height: 50px;
 }
 .friend img {
     border-radius: 50%;
