@@ -70,7 +70,8 @@ function showFilter(fromStorage) {
 }
 
 
-function refreshListView(listName, templateName, parentNode) {   
+function refreshListView(listName, templateName, parentNode, storageName) {
+    if(storageName !== undefined) listName = readStorage(storageName);
     const rtemplate = document.querySelector("#" + templateName).textContent;
     const rrender = Handlebars.compile(rtemplate);
     const rhtml = rrender(listName);
