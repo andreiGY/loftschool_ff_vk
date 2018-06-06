@@ -36,21 +36,8 @@ function callAPI(method, params) {
 (async () => {
     try {
         await auth();
-     //   const [me] = await callAPI('friends.get', { name_case: 'gen' });
-     //   const headerInfo = document.querySelector('#headerInfo');
-
-     //   headerInfo.textContent = `Друзья на странице ${me.first_name} ${me.last_name}`;
-
         const rawfriends = await callAPI('friends.get', { fields: 'nickname, photo_50, first_name, last_name', count: 10 });
         const friends = rawfriends.items;
-       // const template = document.querySelector('#friend-template').textContent;
-       // const render = Handlebars.compile(template);
-      //  const html = render(friends);
-     //   const allfriends = document.querySelector('#allfriends');
-
-      //  allfriends.innerHTML = html;
-      //  console.log(JSON.stringify(friends));
-        //сохранить результат в localstorage:
         friends_list = friends;
         updateStorage(friends_list, "allfriends");
         refreshListView(friends_list, "friend-template","allfriends");
@@ -60,6 +47,7 @@ function callAPI(method, params) {
     }
 })();
 
+/*загрузка уже хранящегося фильтра друзей*/
 function showFilter(fromStorage) {
     if(fromStorage) {
         let result = readStorage("filter_list");
@@ -69,7 +57,7 @@ function showFilter(fromStorage) {
     refreshListView(filter_list, "filter-template","filtered"); 
 }
 
-
+/*обновления списков*/
 function refreshListView(listName, templateName, parentNode, storageName) {
     if(storageName !== undefined) listName = readStorage(storageName);
     const rtemplate = document.querySelector("#" + templateName).textContent;

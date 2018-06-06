@@ -2,11 +2,13 @@
 var filter_list = new Array(); //фильтр друзей
 var friends_list = new Array(); // все друзья
 
-/* читает localstorage для извлечения фильтра друзей */
+
 /*
 filtered_friends -  фильтр друзей
 allfriends - все друзья
 */
+
+/* читает localstorage для извлечения фильтра друзей */
 function readStorage(storageName) {
     let storage = localStorage.getItem(storageName);
     console.log(JSON.parse(storage));
@@ -40,7 +42,6 @@ function removeFromFilter(event, id) {
     console.log("id is: " + id);
     for(let fi in filter_list) {
         if(filter_list[fi].id == id) {
-            //  http://www.codexpedia.com/javascript/javascript-loop-through-array-and-object-properties/              
             friends_list.push(filter_list[fi]);
             updateStorage(friends_list, "friends_list");
             filter_list.splice(fi, 1); 
