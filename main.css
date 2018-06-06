@@ -5,7 +5,7 @@ body {
   
     height: 300px;
     width: 250px;
-    overflow-y: auto;
+    
 }
 .search_field {
     
@@ -49,4 +49,9 @@ body {
 .friend_name_surname {
     text-align: center;
     vertical-align: middle;
+}
+.friends {
+    height: 280px;
+    width: 250px;
+    overflow-y: auto;
 }

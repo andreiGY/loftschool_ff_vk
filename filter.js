@@ -52,34 +52,16 @@ function removeFromFilter(event, id) {
     }
 }
 
-function searchInPanel_v1(searchStr, list) {
-    if(searchStr != "") {
-        for(let it in list) {
-            if(!(list[it].first_name.search(searchStr) != -1 || list[it].last_name.search(searchStr) != -1 )) {
-                console.log("не найдено в:  " + list[it].first_name + " " + list[it].last_name);
-                list.splice(it,1); it =0;               
-            }
-        } 
-        JSON.stringify(list) == JSON.stringify(filter_list) ? refreshListView(filter_list, "filter-template","filtered"): refreshListView(friends_list, "friend-template","allfriends");            
-    } else { 
-        // https://stackoverflow.com/questions/7837456/how-to-compare-arrays-in-javascript
-        JSON.stringify(list) == JSON.stringify(filter_list) ? refreshListView(filter_list, "filter-template","filtered", "filtered_friends"): refreshListView(friends_list, "friend-template","allfriends", "allfriends");            
-    }  
-        
-}
-
 function searchInPanel(searchStr, list) {
     let resArray = [];
     if(searchStr != "") {
         for(let it in list) {
             if(list[it].first_name.search(searchStr) != -1 || list[it].last_name.search(searchStr) != -1 ) {
-               // console.log("не найдено в:  " + list[it].first_name + " " + list[it].last_name);
                 resArray.push(list[it]);              
             }
         } 
         JSON.stringify(list) == JSON.stringify(filter_list) ? refreshListView(resArray, "filter-template","filtered"): refreshListView(resArray, "friend-template","allfriends");            
-    } else { 
-        // https://stackoverflow.com/questions/7837456/how-to-compare-arrays-in-javascript
+    } else {
         JSON.stringify(list) == JSON.stringify(filter_list) ? refreshListView(filter_list, "filter-template","filtered"): refreshListView(friends_list, "friend-template","allfriends");            
     } 
 }
