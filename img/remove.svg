@@ -9,13 +9,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="270"
-   height="270"
-   viewBox="0 0 71.437502 71.437498"
+   width="271.90393"
+   height="51.180161"
+   viewBox="0 0 71.941248 13.541417"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.1 r15371"
-   sodipodi:docname="plus_sybol.svg">
+   sodipodi:docname="remove.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.75"
-     inkscape:cx="350.72272"
-     inkscape:cy="-60.182872"
+     inkscape:zoom="1.5"
+     inkscape:cx="73.257444"
+     inkscape:cy="96.801981"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -36,16 +36,16 @@
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     units="px"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="0">
+     fit-margin-bottom="0"
+     units="px">
     <inkscape:grid
        type="xygrid"
        id="grid4775"
-       originx="-2.645836"
-       originy="-134.9375" />
+       originx="-59.279379"
+       originy="-122.87512" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -63,21 +63,11 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-2.6458359,-90.625008)">
-    <rect
-       style="fill:#0000dd;fill-opacity:1;stroke:none;stroke-width:0.27933449;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect4758"
-       width="13.229164"
-       height="71.4375"
-       x="31.75"
-       y="90.625008" />
-    <rect
-       style="fill:#0000dd;fill-opacity:1;stroke:none;stroke-width:0.27933446;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect4758-1"
-       width="13.229161"
-       height="71.4375"
-       x="119.72918"
-       y="-74.083336"
-       transform="rotate(90)" />
+     transform="translate(-59.279379,-160.58344)">
+    <path
+       style="fill:#f30602;fill-opacity:1;stroke:#f70000;stroke-width:13.54006386;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 66.145833,167.35415 h 58.208337 v 0 0"
+       id="path4484"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>

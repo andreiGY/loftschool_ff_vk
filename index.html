@@ -8,6 +8,7 @@
     <script src="http://vk.com/js/api/openapi.js" type="text/javascript"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="./storage.js"></script>
     <script src="./filter.js"></script>
     <script src="./drag_n_drop.js"></script>
     
@@ -26,10 +27,10 @@
     <script id="friend-template" type="text/x-handlebars-template">
         <div class="friends" ondrop="drop(event)" ondragover="allowDrop(event)"> <!--  items -->
             {{#each this}}   
-            <div class="friend" id= {{id}} draggable="true" ondragstart="drag(event)">
+            <div class="friend" id= {{id}} data-id= {{id}} data-list="a_friends" draggable="true" ondragstart="drag(event)">
                 <img src="{{photo_50}}"/>
                 <div class="friend_name_surname">{{first_name}} {{last_name}}</div>
-                <img src="./img/plus_sybol.svg" style="width:20px" class="add" onclick="add2filter(event, this.parentNode.id)" />
+                <img src="./img/add.svg" style="width:20px" class="add" onclick="add2filter(event, this.parentNode.id)" />
             </div>
             {{else}}
              нет друзей :(
@@ -40,10 +41,10 @@
     <script id="filter-template" type="text/x-handlebars-template">
         <div class="friends" ondrop="drop(event)" ondragover="allowDrop(event)">
             {{#each this}}
-            <div class="friend" id= {{id}} draggable="true" ondragstart="drag(event)">
+            <div class="friend" id= {{id}} data-id= {{id}} data-list="f_friends"  draggable="true" ondragstart="drag(event)">
                 <img src="{{photo_50}}"/>
                 <div class="friend_name_surname">{{first_name}} {{last_name}}</div>
-                <img src="./img/minus_sybol.svg" style="width:20px" class="remove" onclick="removeFromFilter(event, this.parentNode.id)"  />
+                <img src="./img/remove.svg" style="width:20px" class="remove" onclick="removeFromFilter(event, this.parentNode.id)"  />
             </div>
             {{else}}
              список друзей  пуст:(

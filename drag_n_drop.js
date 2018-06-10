@@ -8,13 +8,11 @@ function drag(ev) {
         list: ev.target.parentNode.parentNode.id
     };
     console.log(friend_record.id + " - " + friend_record.list);
-    //ev.dataTransfer.setData("text", ev.target.id);
     ev.dataTransfer.setData("text", JSON.stringify(friend_record));
 }
 
 function drop(ev) {
     ev.preventDefault();
-    //var data = ev.dataTransfer.getData("text");
     var data = JSON.parse(ev.dataTransfer.getData("text"));
     if(data.list == ev.target.parentNode.parentNode.id) return;
     if(data.list == "allfriends") {

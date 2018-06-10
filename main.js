@@ -35,27 +35,24 @@ function callAPI(method, params) {
 
 (async () => {
     try {
-        await auth();
-        const rawfriends = await callAPI('friends.get', { fields: 'nickname, photo_50, first_name, last_name', count: 10 });
-        const friends = rawfriends.items;
-        friends_list = friends;
-        updateStorage(friends_list, "allfriends");
+        // если в хранлище уже существует  сохраненный список всех друзей, то повторно его на загружаем из VK
+        let sfr = readStorage("allfriends");
+        if(sfr == null) 
+        {
+            await auth();
+            const rawfriends = await callAPI('friends.get', { fields: 'nickname, photo_50, first_name, last_name', count: 10 });
+            const friends = rawfriends.items;
+            friends_list = friends;
+            updateStorage(friends_list, "allfriends");
+        } else {
+            friends_list = sfr;
+        }
         refreshListView(friends_list, "friend-template","allfriends");
-
     } catch (e) {
         console.error(e);
     }
 })();
 
-/*загрузка уже хранящегося фильтра друзей*/
-function showFilter(fromStorage) {
-    if(fromStorage) {
-        let result = readStorage("filter_list");
-        if(result !== null) filter_list = result;    
-    }
-    console.log("filter_list contents - " + JSON.stringify(filter_list));
-    refreshListView(filter_list, "filter-template","filtered"); 
-}
 
 /*обновления списков*/
 function refreshListView(listName, templateName, parentNode, storageName) {

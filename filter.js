@@ -1,25 +1,7 @@
-
+/* глобальные переменные -  списки друзей */
 var filter_list = new Array(); //фильтр друзей
 var friends_list = new Array(); // все друзья
 
-
-/*
-filtered_friends -  фильтр друзей
-allfriends - все друзья
-*/
-
-/* читает localstorage для извлечения фильтра друзей */
-function readStorage(storageName) {
-    let storage = localStorage.getItem(storageName);
-    console.log(JSON.parse(storage));
-    return JSON.parse(storage);
-}
-
-/* обновляет localstorage измененным фильтром */
-function updateStorage(data, storageName) {
-    localStorage.setItem(storageName, JSON.stringify(data));
-    console.log(JSON.stringify(data));
-}
 
 /* добавляет друга в фильтр */
 function add2filter(event, id) {   
@@ -53,7 +35,7 @@ function removeFromFilter(event, id) {
     }
 }
 
-function searchInPanel(searchStr, list) {
+function searchInPanel(searchStr, list) {   
     let resArray = [];
     if(searchStr != "") {
         for(let it in list) {
@@ -65,5 +47,14 @@ function searchInPanel(searchStr, list) {
     } else {
         JSON.stringify(list) == JSON.stringify(filter_list) ? refreshListView(filter_list, "filter-template","filtered"): refreshListView(friends_list, "friend-template","allfriends");            
     } 
+}
+
+/*загрузка уже хранящегося фильтра друзей*/
+function showFilter(fromStorage) {
+    if(fromStorage) {
+        let result = readStorage("filter_list");
+        if(result !== null) filter_list = result;    
+    }
+    refreshListView(filter_list, "filter-template","filtered"); 
 }
 
