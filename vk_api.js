@@ -35,16 +35,18 @@ function callAPI(method, params) {
 
 (async () => {
     try {
-        // если в хранлище уже существует  сохраненный список всех друзей, то повторно его на загружаем из VK
+        // если в хранлище уже существует  сохраненный список всех друзей, то повторно его не загружаем из VK
         let sfr = readStorage("allfriends");
         if(sfr == null) 
         {
+            console.log("список друзей отсутствует в localstorage");
             await auth();
             const rawfriends = await callAPI('friends.get', { fields: 'nickname, photo_50, first_name, last_name', count: 10 });
             const friends = rawfriends.items;
             friends_list = friends;
             updateStorage(friends_list, "allfriends");
         } else {
+            console.log("список друзей найден в localstorage");
             friends_list = sfr;
         }
         refreshListView(friends_list, "friend-template","allfriends");
@@ -53,16 +55,5 @@ function callAPI(method, params) {
     }
 })();
 
-
-/*обновления списков*/
-function refreshListView(listName, templateName, parentNode, storageName) {
-    if(storageName !== undefined) listName = readStorage(storageName);
-    const rtemplate = document.querySelector("#" + templateName).textContent;
-    const rrender = Handlebars.compile(rtemplate);
-    const rhtml = rrender(listName);
-    const rfriends = document.querySelector("#" + parentNode);
-    rfriends.innerHTML = rhtml;
-    console.log(JSON.stringify(rfriends));
-}
-
-showFilter(true);
+/*отобразить список отфильтрвоанных друзей из localstorage*/
+refreshListView(filter_list, "filter-template","filtered", filtered_friends);

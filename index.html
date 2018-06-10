@@ -11,26 +11,27 @@
     <script src="./storage.js"></script>
     <script src="./filter.js"></script>
     <script src="./drag_n_drop.js"></script>
+    <script src="./render.js"></script>
     
 </head>
 <body>
     <div id="main">
         <div id="allfriendsParent" class="panel">
            <input type="text" class="search_field" id="allfriends_search" width="100px" onkeyup="searchInPanel(this.value,friends_list)"/>
-           <div id="allfriends"></div>
+           <div id="allfriends" data-list="a_friends"></div>
         </div>
         <div id="filteredParent" class="panel">
             <input type="text" class="search_field" id="filtered_search" width="100px" onkeyup="searchInPanel(this.value,filter_list)"/>
-           <div id="filtered"></div>
+           <div id="filtered" data-list="f_friends"></div>
         </div>
     </div>
     <script id="friend-template" type="text/x-handlebars-template">
-        <div class="friends" ondrop="drop(event)" ondragover="allowDrop(event)"> <!--  items -->
+        <div class="friends" data-list="a_friends" ondrop="drop(event)" ondragover="allowDrop(event)"> <!--  items -->
             {{#each this}}   
             <div class="friend" id= {{id}} data-id= {{id}} data-list="a_friends" draggable="true" ondragstart="drag(event)">
                 <img src="{{photo_50}}"/>
                 <div class="friend_name_surname">{{first_name}} {{last_name}}</div>
-                <img src="./img/add.svg" style="width:20px" class="add" onclick="add2filter(event, this.parentNode.id)" />
+                <img src="./img/add.svg" style="width:20px" class="add" onclick="moveFriend('a_friends', 'f_friends', this.parentNode.dataset.id )" /> <!--  add2filter(event, this.parentNode.id) -->
             </div>
             {{else}}
              нет друзей :(
@@ -39,12 +40,12 @@
     </script>
 
     <script id="filter-template" type="text/x-handlebars-template">
-        <div class="friends" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="friends" data-list="f_friends" ondrop="drop(event)" ondragover="allowDrop(event)">
             {{#each this}}
             <div class="friend" id= {{id}} data-id= {{id}} data-list="f_friends"  draggable="true" ondragstart="drag(event)">
                 <img src="{{photo_50}}"/>
                 <div class="friend_name_surname">{{first_name}} {{last_name}}</div>
-                <img src="./img/remove.svg" style="width:20px" class="remove" onclick="removeFromFilter(event, this.parentNode.id)"  />
+                <img src="./img/remove.svg" style="width:20px" class="remove" onclick="moveFriend('f_friends', 'a_friends', this.parentNode.dataset.id)"  /> <!-- removeFromFilter(event, this.parentNode.id) -->
             </div>
             {{else}}
              список друзей  пуст:(
@@ -52,6 +53,6 @@
         </div>
     </script>
 
-    <script src="./main.js"></script>
+    <script src="./vk_api.js"></script>
 </body>
 </html>
